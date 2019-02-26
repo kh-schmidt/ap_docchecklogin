@@ -16,7 +16,7 @@ if (!defined('TYPO3_MODE')) {
 );
 
 // Add the service
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addService($_EXTKEY, 'auth', 'Antwerpes\\ApDocchecklogin\\DocCheckAuthenticationService', array(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addService($_EXTKEY, 'auth', Antwerpes\ApDocchecklogin\DocCheckAuthenticationService::class, array(
     'title' => 'DocCheck Authentication Service',
     'description' => 'Authenticates users through the DocCheck Authentication Service',
     'subtype' => 'getUserFE,authUserFE',
@@ -28,4 +28,4 @@ if (!defined('TYPO3_MODE')) {
     'className' => 'Antwerpes\\ApDocchecklogin\\DocCheckAuthenticationService'
 ));
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['initFEuser'][] = 'EXT:ap_docchecklogin/Classes/DocCheckAuthenticationService.php:&Antwerpes\ApDocchecklogin\DocCheckAuthenticationService->bypassLoginForCrawling';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['initFEuser'][] = Antwerpes\ApDocchecklogin\DocCheckAuthenticationService::class . '->bypassLoginForCrawling';
